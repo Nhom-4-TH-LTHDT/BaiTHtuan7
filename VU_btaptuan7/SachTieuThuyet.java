@@ -1,13 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package NVQ_BTHTuan7;
-
-/**
- *
- * @author ADMIN
- */
+package VU_btaptuan7;
 public class SachTieuThuyet extends Sach implements IKiemKe {
     private final String theLoai;
     private final boolean laSachSeries;
