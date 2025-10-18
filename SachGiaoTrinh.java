@@ -1,60 +1,40 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package NVQ_BTHTuan7;
-
-/**
- *
- * @author ADMIN
- */
 public class SachGiaoTrinh extends Sach implements IKiemKe {
-    private final String monHoc;
-    private final String capDo;
-    private static final int NAM_HIEN_TAI = 2025;
+    private String monHoc;
 
-    public SachGiaoTrinh(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan, String monHoc, String capDo) {
-        super(maSach, tieuDe, tacGia, namXuatBan, soLuong, giaCoBan);
+    // Constructor cập nhật
+    public SachGiaoTrinh(String maSach, String tieuDe, int namXuatBan, int soLuong, double giaCoBan, String monHoc) {
+        // Gọi constructor của lớp cha
+        super(maSach, tieuDe, namXuatBan, soLuong, giaCoBan);
         this.monHoc = monHoc;
-        this.capDo = capDo;
     }
 
+    //  Ghi đè phương thức trừu tượng tinhGiaBan()
     @Override
     public double tinhGiaBan() {
-        int soNamDaXuatBan = NAM_HIEN_TAI - this.getNamXuatBan();
-        return this.getGiaCoBan() + (soNamDaXuatBan * 5000.0);
-    }
-    
-    public String getMonHoc() {
-        return monHoc;
+        int namHienTai = 2025; // Giả định năm hiện tại là 2025
+        int soNamDaXuatBan = namHienTai - getNamXuatBan();
+        // Giá bán = giaCoBan + (Số năm đã xuất bản × 5.000 VNĐ)
+        return getGiaCoBan() + (soNamDaXuatBan * 5000.0);
     }
 
-    public String getCapDo() {
-        return capDo;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString() +
-               "\nMôn học: " + monHoc +
-               "\nCấp độ: " + capDo +
-               "\nGiá Bán Ước Tính: " + String.format("%,.0f VNĐ", this.tinhGiaBan());
-    }
-    
-    @Override
-    public void hienThiThongTin() {
-        System.out.println("--- THÔNG TIN SÁCH GIÁO TRÌNH ---");
-        System.out.println(this.toString());
-        System.out.println("---------------------------------");
-    }
-
+    //  Triển khai giao diện IKiemKe
     @Override
     public boolean kiemTraTonKho(int soLuongToiThieu) {
-        return this.getSoLuong() >= soLuongToiThieu;
+        // Trả về true nếu soLuong của sách >= soLuongToiThieu
+        return getSoLuong() >= soLuongToiThieu;
     }
 
     @Override
     public void capNhatViTri(String viTriMoi) {
-        System.out.println("Đã chuyển sách " + this.getTieuDe() + " đến khu vực: " + viTriMoi + ".");
+        // In ra thông báo cập nhật vị trí
+        System.out.println("Đã chuyển sách [" + getTieuDe() + "] đến khu vực: " + viTriMoi + ".");
+    }
+
+    // Cập nhật toString()
+    @Override
+    public String toString() {
+        // Thêm thông tin monHoc và Giá bán tính toán được
+        return super.toString() + ", Môn học: " + monHoc +
+               ", Giá Bán Ước Tính: " + String.format("%,.0f VNĐ", tinhGiaBan());
     }
 }
