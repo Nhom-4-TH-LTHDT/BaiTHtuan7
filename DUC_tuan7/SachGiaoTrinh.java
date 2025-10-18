@@ -1,18 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package NVQ_BTHTuan7;
-
-/**
- *
- * @author ADMIN
- */
+package DUC_tuan7;
 public class SachGiaoTrinh extends Sach implements IKiemKe {
     private final String monHoc;
     private final String capDo;
     private static final int NAM_HIEN_TAI = 2025;
-
     public SachGiaoTrinh(String maSach, String tieuDe, String tacGia, int namXuatBan, int soLuong, double giaCoBan, String monHoc, String capDo) {
         super(maSach, tieuDe, tacGia, namXuatBan, soLuong, giaCoBan);
         this.monHoc = monHoc;
